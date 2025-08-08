@@ -40,20 +40,24 @@ function createSquareDiv() {
 
   container.appendChild(square);
 }
+
+newGridBtn.addEventListener("click", () => {
+  let newGridSquares = parseInt(
+    prompt(
+      "Enter the number of squres needed per side on your new grid (ex:- 16 for 16 x 16)?"
+    )
+  );
+  clearGrid();
+  createGrid(newGridSquares);
+});
+
 function createGrid(numOfSqaures = 16) {
   for (let i = 1; i <= numOfSqaures ** 2; i++) {
     createSquareDiv();
   }
 }
-createGrid();
-function numOfGridSquares() {
-  const newGridSquares = parseInt(
-    prompt(
-      "Enter the number of squres needed per side on your new grid (ex:- 16 for 16 x 16)?"
-    )
-  );
-  return newGridSquares;
+function clearGrid() {
+  container.innerHTML = "";
 }
-newGridBtn.addEventListener("click", () => {
-  numOfGridSquares();
-});
+
+createGrid();
