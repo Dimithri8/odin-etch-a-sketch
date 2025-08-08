@@ -21,6 +21,7 @@ newGridBtn.style.backgroundColor = "#f54275";
 newGridBtn.style.border = "none";
 newGridBtn.style.padding = "10px";
 newGridBtn.style.borderRadius = "10px";
+newGridBtn.style.cursor = "pointer";
 
 document.body.appendChild(newGridBtn);
 
@@ -39,7 +40,20 @@ function createSquareDiv() {
 
   container.appendChild(square);
 }
-
-for (let i = 1; i <= 256; i++) {
-  createSquareDiv();
+function createGrid(numOfSqaures = 16) {
+  for (let i = 1; i <= numOfSqaures ** 2; i++) {
+    createSquareDiv();
+  }
 }
+createGrid();
+function numOfGridSquares() {
+  const newGridSquares = parseInt(
+    prompt(
+      "Enter the number of squres needed per side on your new grid (ex:- 16 for 16 x 16)?"
+    )
+  );
+  return newGridSquares;
+}
+newGridBtn.addEventListener("click", () => {
+  numOfGridSquares();
+});
